@@ -1,0 +1,52 @@
+EEG SIGNAL PROCESSING - BIOPAC / MATLAB
+=====================================
+
+Input file: C:\Users\User\Desktop\大四\生醫\EXP2\g5L03_4C_raw.txt
+Samples: 12179; Fs = 200.000000 Hz; Duration = 60.890 seconds
+Unit: microvolts (uV). CH1 = raw EEG.
+BIOPAC reference mapping: CH42=Delta, CH43=Theta, CH40=Alpha, CH41=Beta.
+
+Experimental state changes (user log): 20.20 s, 40.39 s.
+Experimental states confirmed by user: 1
+Filter: MATLAB butter(4,[lo hi]/(Fs/2),'bandpass'), realized as SOS
+Overall bandpass transfer-function order: 8
+Filtering: filtfilt (zero-phase OFFLINE); PSD: pwelch (window 4.0 s).
+Correlation: Pearson r, zero-lag; lag search is diagnostic only.
+Coherence: average magnitude-squared coherence over each band.
+
+Epoch 1: Eyes_Closed_1, 0.00 to 20.20 seconds
+Band      DesignedPower  BIOPACPower    Ratio      r(0)      MSC
+Delta           3.2096        1.9387    1.6556   +0.0383    0.9271
+Theta          0.91932        1.2447    0.7386   +0.5811    0.9822
+Alpha          0.84588         1.161    0.7286   +0.6446    0.9902
+Beta            1.1971        1.5742    0.7604   +0.4553    0.9982
+
+Epoch 2: Eyes_Open, 20.20 to 40.39 seconds
+Band      DesignedPower  BIOPACPower    Ratio      r(0)      MSC
+Delta           3.6804         1.886    1.9514   -0.0068    0.8948
+Theta          0.57699       0.80646    0.7155   +0.4973    0.9757
+Alpha          0.52534       0.71521    0.7345   +0.5816    0.9887
+Beta            1.1047        1.4689    0.7520   +0.4437    0.9985
+
+Epoch 3: Eyes_Closed_2, 40.39 to 60.90 seconds
+Band      DesignedPower  BIOPACPower    Ratio      r(0)      MSC
+Delta           1.5825         1.756    0.9012   +0.2455    0.9118
+Theta          0.75019        1.0782    0.6958   +0.3461    0.9839
+Alpha          0.98957        1.3697    0.7225   +0.5762    0.9904
+Beta            1.9137        2.5666    0.7456   +0.4841    0.9986
+
+CLOSED vs OPEN BAND POWER (duration-weighted closed periods)
+Note: two closed epochs are analyzed separately, NOT concatenated.
+Delta: MATLAB closed/open = 0.64938; BIOPAC closed/open = 0.97914
+Theta: MATLAB closed/open = 1.44563; BIOPAC closed/open = 1.43942
+Alpha: MATLAB closed/open = 1.74795; BIOPAC closed/open = 1.77026
+Beta: MATLAB closed/open = 1.41044; BIOPAC closed/open = 1.41203
+
+
+LIMITATIONS:
+1. BIOPAC and MATLAB filters can differ in roll-off, phase, gain, and edge effects.
+2. High coherence does not imply identical waveforms, gain, or phase.
+3. A frequency band is not a diagnosis; eye labels must be verified.
+4. BIOPAC reference channels are processed signals, not independent ground truth.
+5. The segment boundaries 20.20/40.39 s come from the experiment log, not the TXT file.
+6. Transition-related artifacts near condition switches may affect estimated power.
